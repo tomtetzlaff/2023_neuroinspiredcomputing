@@ -1,2 +1,2 @@
-# 2023_neuroinspiredcomputing
-lecture slides "Anatomy of the neocortex" for Neuroinspired Computing seminar
+# Lecture "Anatomy of the neocortex"
+- lecture slides for Neuroinspired Computing seminar

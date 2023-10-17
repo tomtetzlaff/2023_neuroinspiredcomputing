@@ -1,0 +1,996 @@
+\def\src{../2023_juncatutorials}
+
+\documentclass[8pt,t,usepdftitle=false]{beamer}
+\usetheme{Juelich}
+\usepackage{setspace}
+\usepackage[official]{eurosym}
+\usepackage{bm}
+\usepackage{mathtools}
+%\usepackage{enumitem}\setitemize{itemsep=1ex}
+\usepackage[%
+backend=bibtex,
+style=authoryear,
+doi=true,
+isbn=true,
+url=true,
+eprint=false,
+sorting=nyt]{biblatex}
+\addbibresource{\src/refs.bib}
+
+\fzjset{
+  title=regular,
+  subtitle=regular,
+  part=regular,
+}
+
+\setbeamerfont{title}{size*={10pt}{10pt},series=\bfseries}
+\setbeamerfont{subtitle}{size*={12pt}{12pt},series=\bfseries\color{white}}
+\setbeamerfont{frametitle}{size*={14pt}{14pt},series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{itemize/enumerate body begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subsubsubbody begin}{\normalsize}
+
+\mode<presentation>
+{
+  \usetheme{default}
+  %% \setbeamercovered{transparent}
+  \usefonttheme{professionalfonts}
+  \usefonttheme{structurebold}
+  \usecolortheme[rgb={0,0.3,0.6}]{structure}
+}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSection[]
+{
+  %\begin{frame}<beamer>
+    \begin{frame}[plain]
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\setlength{\leftmarginii}{3ex}
+
+\setbeamercolor{alerted text}{fg=fzjblue}
+
+\renewcommand{\arraystretch}{1.5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% macros
+\def\figpath{\src/figures}
+
+\hypersetup{
+  pdftitle={Anatomy of the neocortex},
+  pdfauthor={Tom Tetzlaff}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\title{%
+  {\ \\\LARGE\bf Anatomy of the neocortex}\\[1ex]
+}
+\subtitle{%
+  {\normalsize\mdseries Tom Tetzlaff}%
+  {\hfill\tiny\url{t.tetzlaff{at}fz-juelich.de}}\\
+  {\footnotesize\mdseries Institute of Neuroscience and Medicine (INM-6), J\"ulich Research Centre and JARA}
+  {\hfill\tiny\url{http://www.csn.fz-juelich.de}}
+  \\
+  {\tiny\mdseries Neuroinspired Computing seminar, J\"ulich, 19.10.2023}
+}
+\date{}
+\author{}
+\institute{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \begin{center}
+    \parbox{0.9\linewidth}{
+      \vspace{0.95\textheight}
+      \parbox[c]{0.1\linewidth}{%
+        \href{https://creativecommons.org/licenses/by-sa/4.0}{%
+          \includegraphics[width=\linewidth]{\figpath/by-sa.png}}}
+      \parbox[c]{0.9\linewidth}{\scriptsize%
+        ~~{}This presentation is provided under the terms of the Creative Commons Attribution-ShareAlike License 4.0.
+      }
+    }    
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Outline}
+\pdfbookmark[2]{Outline}{Outline}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Macroscopic cortex structure}
+\section{\ttl}
+\begin{frame}[plain,t]
+  \frametitle{\ttl}
+  \framesubtitle{Classification}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \itemsep1ex
+      \item forebrain (anterior part of the brain): 
+        \begin{itemize}\itemsep1ex
+          % \item relatively undeveloped in lower vertebrates 
+          %   (fish, amphibia, reptiles)
+          % \item largest part of the mammalian brain 
+        \item diencephalon, e.g.~thalamus and hypothalamus
+        \item telencephalon (cerebrum)
+          \begin{itemize}
+          \item basal ganglia
+            (motor control, cognition, emotions, learning)
+          \item limbic system, e.g.~amygdala (emotions)
+          \item olfactory bulb (smell)
+          \item cerebral cortex\\ (archeocortex + \alert{neocortex})
+          \end{itemize}
+        \end{itemize}
+      \end{itemize}      
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \vspace*{-1cm}
+      \parbox{0.8\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/EmbryonicBrain.png}\\
+        \hspace*{\fill}\tiny\color{gray}{(Embryonic vertebrate brain; Wikipedia)}
+      }\\[1ex]
+      \parbox{0.9\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/brainformation_bioninja.jpg}\\
+        \hspace*{\fill}\tiny\color{gray}{(\url{ib.bioninja.com.au})}
+      }%                    
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cortex folds}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \itemsep1ex
+      \item<1-> neocortex = surface of the mammalian brain (gray matter)
+      \item<1-> strongly folded in 'higher' mammals
+        \begin{itemize}\itemsep1ex
+        \item large surface (relatively to skull volume)
+        \item efficient wiring between cortical areas through white matter
+        \end{itemize}
+      \item<2-> folds = 'sulci'
+      \item<2-> region between adjacent folds = 'gyrus'
+      \item<2-> location of (deep) sulci is consistent across individuals of the same species    
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \vspace*{-1.5cm}
+      \begin{center}
+        \only<1->{
+          \parbox[b]{0.7\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/Gray717.png}
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Gray18}}
+          }\\
+        }
+        \only<2->{
+          \parbox[b]{\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_1_2.png}
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}     
+          }
+        }
+      \end{center}
+    \end{column}    
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cortex thickness}
+  \begin{columns}
+    \begin{column}{0.45\linewidth}
+      \begin{itemize}\itemsep1ex
+      \item<1-> thickness of human cortex:\\
+        $1$--$4.5\,\text{mm}$ (average: $2.5\,\text{mm}$)
+      \item<2-> Evolution increased mainly the surface of the cortex.
+      \item<2-> Its vertical organisation
+      (thickness, cortex layers, cell proportions, etc.) remained relatively constant.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.55\linewidth}
+      \begin{center}
+        \vspace*{-0.5cm}
+        \parbox{\linewidth}{
+          \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_1_3.png}
+          \hspace*{\fill}\tiny\color{gray}{(numbers represent relative brain mass; \cite{Abeles91})}
+        }
+        \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cerebral hemispheres}
+  \begin{itemize}\itemsep1ex
+  \item two mirror-symmetric cerebral hemispheres
+  \item interconnected via the Corpus callosum (white matter)
+  \end{itemize}
+  \begin{center}
+    \parbox{\linewidth}{
+      \parbox[b]{0.45\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/Gray717.png}
+        \hspace*{\fill}\tiny\color{gray}{(Gray, 1918)}
+      }%
+      \hfill%
+      \parbox[b]{0.5\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/humbrain.png}
+        \hspace*{\fill}\tiny\color{gray}{\parencite{Abeles91}}
+      }      
+    }
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cerebral hemispheres}
+  \begin{columns}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}\itemsep1ex
+      \item brain function is sometimes lateralised (preference for one hemisphere)
+      \item in general, however, involvement of both hemispheres
+      \item<2-> example: visual pathway
+        \begin{itemize}\itemsep1ex
+        \item each hemisphere receives information from both eyes
+        \item however, preference of input from left part of the visual 
+        field for right hemisphere (and vice versa)
+        \end{itemize}
+      \end{itemize}      
+    \end{column}
+    \begin{column}{0.6\linewidth}
+      \begin{center}
+        \vspace*{-0.5cm}
+        \parbox{\linewidth}{
+          \includegraphics[width=\linewidth]{\figpath/lateralisation.png}
+          %\hspace*{\fill}\tiny\color{gray}{()}
+        }\\[1ex]
+        \only<2->{
+        \parbox{0.6\linewidth}{
+          \includegraphics[width=\linewidth]{\figpath/visualpath.jpg}
+          %\hspace*{\fill}\tiny\color{gray}{()}
+        }}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cortical areas}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \vspace*{-3ex}
+      \begin{itemize}\itemsep1ex
+      \item subdivision of cortex into areas according to
+        \begin{itemize}\itemsep1ex
+        \item \emph{functional} properties
+        \item \emph{histo-anatomical} features (cytoarchitecture, e.g.~Brodman areas)
+        \end{itemize}
+      \item frequent coincidence of both definitions,
+        e.g.,\\ primary visual cortex (V1) = Brodman area 17
+      \item<2-> further segmentation of cortical areas into functional subdomains
+      \item<2->[] examples:
+        \begin{itemize}\itemsep1ex
+        \item somatosensory cortex
+        \item rat ``barrel'' cortex
+        \end{itemize}
+      \end{itemize}
+      \vspace{1ex}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \only<1>{
+          \vspace*{-0.5cm}
+          \parbox{\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/functorganisation2.png}
+            % \hspace*{\fill}\tiny\color{gray}{()}     
+          }\\[2ex]
+          \parbox{0.8\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_3_5.png}
+            \hspace*{\fill}\tiny\color{gray}{\parencite{Abeles91}}
+          }
+        }
+        \only<2>{
+          \vspace*{-0.7cm}
+          \parbox{0.6\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/homunculus.jpg}
+            \hspace*{\fill}\tiny\color{gray}{(somatosensory cortex)}      %% unknown figure source
+          }
+        }
+        \only<3>{
+          \vspace*{-1.4cm}
+          \parbox{\linewidth}{
+            \hspace{0.5cm}
+            \includegraphics[width=0.75\linewidth]{\figpath/Vasconcelos11_15408_fig5.png}\\[-3ex]
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Vasconcelos11_15408}}
+          }
+        }
+      \end{center}      
+    \end{column}
+  \end{columns}
+  \only<2>{
+    \parbox{\linewidth}{
+      \parbox{0.6\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/barrelcortexA.png}
+      }\hfill
+      \parbox{0.35\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/barrelcortexB.png}
+      }\\[1ex]
+      \hspace*{\fill}\tiny\color{gray}{(barrel cortex)}    %% unknown figure source
+    }
+  }
+  \only<3>{
+    \fbox{\parbox{\linewidth}{
+      \emph{however:}
+      \begin{itemize}
+      \item \emph{The fact that certain regions in the cortex are specialized in some modality or function does not imply that the rest of the cortex is not involved in this function.}
+      \item \emph{The representation of each function is typically widely distributed across the cortex and involves many areas.}
+      \item \emph{This is true for all spatial scales -- from entire cortical areas to individual neurons\\ (cf., ``receptive fields'').}
+      \end{itemize}
+    }}
+  }  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Microscopic cortex structure}
+\section{\ttl}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cell types}
+  \begin{itemize}\itemsep1ex
+  \item cortical tissue mainly composed of two cell types:
+    \begin{itemize}\itemsep1ex
+    \item \emph{neuroglia (glia)}:
+      \begin{itemize}\itemsep1ex
+      \item important role in development of the brain
+      \item metabolic supportive role
+      \item control ionic composition of extracellular space
+      \item form myelin sheath around axons of neurons
+      \item do not take part in interaction between neurons on a millisecond scale
+      \item however: play a role in slow modulations
+      \end{itemize}
+    \item \emph{nerve cells (neurons)}:
+      \begin{itemize}\itemsep1ex
+      \item carry out information processing and storage in the brain
+      \end{itemize}
+    \end{itemize}
+  \item neuron-glia ratio $\approx$ 1:1 
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cortical neurons}
+  \begin{center}
+  \parbox{0.85\linewidth}{
+    \includegraphics[width=\linewidth]{\figpath/Complete_neuron_cell_diagram.png}
+    \hspace*{\fill}\tiny\color{gray}{(Wikipedia)}
+  }    
+  \end{center}
+\end{frame}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cortical neurons}
+  \begin{center}
+    \vspace*{-2ex}
+  \parbox{0.8\linewidth}{
+    \includegraphics[width=\linewidth]{\figpath/Lee06_e29_fig6f.png}\\[1ex]
+    \hspace*{\fill}\tiny\color{gray}{(pyramidal neuron in mouse visual cortex; \cite{Lee06_e29})}
+  }    
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Neuron types}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \vspace*{-3ex}
+       \begin{itemize} 
+       \item<1-> classification of different neuron types according to 
+         \begin{itemize}
+         \item morphology of cell body and dendritic tree, e.g.
+           \begin{itemize}
+           \item pyramidal cells: triangular soma profile, 
+             long apical dendrites extending from cell body towards 
+             the cortex surface, basal dendrites close to soma
+           \item stellate cells: star shaped, dendrites extending in all directions
+           \end{itemize}
+         \item<2-> type of synapse, e.g.
+           \begin{itemize}
+           \item smooth cells
+           \item  spiny cells
+           \end{itemize}
+         \item<3-> location of the cell body (layer)
+         \item<4-> other criteria 
+           (e.g.,~brain region to which axons project, neurotransmitters, 
+           other biochemical aspects)
+         \end{itemize}
+       \item<5-> classification by \textcite{Abeles91}:
+         \begin{itemize}
+         \item \alert{pyramidal cell}
+         \item \alert{spiny stellate cell}
+         \item \alert{smooth stellate cell}
+         \end{itemize}
+       \end{itemize}
+     \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \vspace*{-5ex}
+        \only<1->{
+          \parbox[t]{0.45\linewidth}{
+            {\small Pyramidal cell}\\
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_2_2.png}
+            % \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}
+          }\hfill
+          \parbox[t]{0.45\linewidth}{
+            {\small Stellate cell}\\          
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_2_3.png}\\
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}
+          }\\[2ex]
+        }
+        \only<2->{
+          \parbox[t]{0.7\linewidth}{
+            {\small Dendritic spines}\\
+            \includegraphics[width=0.65\linewidth]{\figpath/crtcncs_fig1_2_1.png}
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}
+          }
+        }
+  \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Neuron types}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \vspace*{-2ex}
+      \begin{itemize}
+      \item<1-> \emph{pyramidal cell}:
+      \begin{itemize}
+      \item dendrites covered with spines
+      \item axon leaves cortex into white matter but has numerous branches close cell body
+      \item axons make \emph{excitatory} synapses
+      \item cell receives input from inhibitory cells mainly at the soma and from excitatory cells at the basal and apical dendrite
+      \end{itemize}
+      \item<2-> \emph{spiny stellate cell}:
+      \begin{itemize}
+      \item axon branches out within the cortex (rarely leaves the cortex)
+      \item axons make \emph{excitatory} synapses
+      \item soma receives exclusively inhibitory and dendrites mostly excitatory inputs
+      \end{itemize}
+      \item<3-> \emph{smooth stellate cell} (e.g., basket cell):
+      \begin{itemize}
+      \item axon branches out only in the cortex
+      \item axons make \emph{inhibitory} synapses (GABA)
+      \item both the soma and the dendrites receive a mixture of excitatory and inhibitory inputs
+      \end{itemize}
+    \end{itemize}           
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \vspace*{-0.5cm}
+        \only<1>{
+          \parbox{0.8\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_2_2.png}\\
+            \hspace*{\fill}{\tiny\color{gray}(pyramidal cell; \cite{Abeles91})}
+          }
+        }
+        \only<2>{
+          \parbox{0.9\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_2_3.png}\\
+            \hspace*{\fill}{\tiny\color{gray}(spiny stellate cell; \cite{Abeles91})}
+          }        
+        }
+        \only<3>{
+          \parbox{0.9\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_2_4.png}\\
+            \hspace*{\fill}{\tiny\color{gray}(smooth stellate cell; \cite{Abeles91})}
+          }        
+        }
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Neuron types}
+  \parbox{\linewidth}{
+    \includegraphics[width=\linewidth]{\figpath/Binzegger04_8441_fig2.png}\\
+    \hspace*{\fill}{\tiny\color{gray}\parencite{Binzegger04}}
+  }        
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Cortical layers}
+  \vspace*{-1ex}
+  \begin{itemize}
+  \item subdivision of neocortex into 6 (or 5) layers
+    \begin{itemize}
+    \item \alert{layer I}: 
+      very few neurons, only dendrites and mesh of horizontal axons
+    \item \alert{layer II/III}: 
+      small pyramidal cells
+    \item \alert{layer IV}: 
+      small and medium-size pyramidal cells and stellate cells 
+      in layer IVA, 
+      almost exclusively stellate cells in IVB
+    \item \alert{layer V}: 
+      all cell types, large pyramidal cells dominate
+    \item \alert{layer VI}: 
+      small and medium-size pyramidal cells
+    \end{itemize}
+  \end{itemize}
+  \vspace*{1ex}
+  \parbox{\linewidth}{
+    \parbox{0.38\linewidth}{
+      \includegraphics[width=\linewidth]{\figpath/layers.png}\\
+      % \hspace*{\fill}{\tiny\color{gray}\parencite{}}
+    }%
+    \hfill    
+    \parbox{0.55\linewidth}{
+      \vspace*{-5ex}
+      \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_3_4.png}\\
+      {\small primary motor area}%
+      \hfill
+      {\small primary sensory area}\\
+      \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}
+    }
+  }        
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Neuron density}
+  \only<1>{
+    \begin{center}
+      \parbox{\linewidth}{       
+        \parbox{0.4\linewidth}{
+          \includegraphics[width=\linewidth]{\figpath/layers}
+        }%
+        \hfill
+        \parbox{0.6\linewidth}{
+          \vspace*{-0.7cm}
+          \includegraphics[width=\linewidth]{\figpath/pyram}
+        }\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}
+      }
+    \end{center}
+  }
+  \only<2->{
+    \begin{center}
+      \vspace*{-0.35cm}
+      \parbox{\linewidth}{       
+        \parbox{0.5\linewidth}{
+          \includegraphics[width=\linewidth]{\figpath/axons}
+        }%
+        \hfill
+        \parbox{0.5\linewidth}{
+          \includegraphics[width=\linewidth]{\figpath/Abeles91_tables_1_5_1_and_1_5_4.png}
+        }\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Abeles91}}
+      }
+    \end{center}
+  }         
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Cortical connectivity}
+\section{\ttl}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Synapses}
+  \begin{itemize}
+  \item communication between nerve cells via synapses
+    \begin{itemize}
+    \item<1-> \emph{electrical synapses} (gap junctions): 
+      \begin{itemize}
+      \item direct electrical contact between two cells through ion channels 
+        (membrane proteins) spanning membranes of both cells
+        of both cells
+      \item in the cortex only between GABAergic interneuons
+      \end{itemize}
+    \item<2-> \emph{chemical synapses}:
+      \begin{itemize}
+      \item signaling between pre- and postsynaptic neuron via neurotransmitters 
+        diffusing across the synaptic cleft
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  \parbox{\linewidth}{
+    \only<1->{
+      \parbox{0.48\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/Gap_cell_junction.png}\\
+        \hspace*{\fill}{\tiny\color{gray}(gap junction; Wikipedia)}
+      }
+    }
+    \only<2->{
+      \parbox{0.48\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/synapse2.jpg}\\ %% unknown source
+        \hspace*{\fill}{\tiny\color{gray}(chemical synapse)}        
+      }
+    }
+  }  
+\end{frame}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Chemical synapses}  
+  \begin{center}
+    \vspace*{-0.3cm}
+  \parbox{0.62\linewidth}{
+    \includegraphics[width=\linewidth]{\figpath/synapse.jpg}\\ %% unknown source
+  }    
+  \end{center}
+\end{frame}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Chemical synapses}
+  \begin{itemize}\itemsep1ex
+  \item<1-> chemical synapses are slower than electrical synapses ($1$\ldots$10\,\text{ms}$)
+  \item<1-> modulation of synaptic strength through
+    \begin{itemize}\itemsep1ex
+    \item amount of neurotransmitter
+    \item (in)activation of postsynaptic neurotransmitter receptors
+    \item postsynaptic ion-channel density
+    \end{itemize}
+    $\curvearrowright$ \emph{learning}
+  \item<2-> postsynaptic effect depends on neurotransmitter, receptor and 
+    ion-channel type, e.g.
+    \begin{itemize}\itemsep1ex
+    \item binding of Glutamate at NMDA receptors\\
+      $\curvearrowright$ opening of a nonselective cation channel
+      (Na$^+$, K$^+$, Ca$^{2+}$)\\
+      $\curvearrowright$ Na$^+$ (and Ca$^{2+}$) influx, K$^+$ outflow\\
+      $\curvearrowright$ depolarisation of postsynaptic membrane, 
+      i.e., \emph{excitation}
+    \item binding of GABA (Gamma-aminobutyric acid) at GABA receptors\\
+      $\curvearrowright$ opening of Cl$^-$ channels in postsynaptic membrane\\
+      $\curvearrowright$ Cl$^-$ influx\\
+      $\curvearrowright$ hyperpolarisation, i.e., \emph{inhibition}
+    \end{itemize}
+  \item<3->[]but also on postsynaptic membrane potential (reversal potentials) 
+    and ion concentrations
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}[t,plain]
+  \frametitle{\ttl}
+  \framesubtitle{Afferent (incoming) connections}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}\itemsep1ex
+      \item external (non-local) inputs from
+        \begin{itemize}\itemsep1ex
+        \item brain stem,
+        \item subcortical nuclei
+        \item in particular, thalamus (thalamo-cortical afferents):
+          mainly to layer IV
+        \item other cortical areas (cortico-cortical afferents)
+          via white matter:
+          mostly to superficial layers
+        \end{itemize}
+      \item inputs from cortical neurons in the local neighborhood
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \vspace*{-1cm}
+      \parbox{\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/crtcncs_fig1_3_7.png}\\
+        \parbox{\linewidth}{\tiny\color{gray}(a,b: specific thalamo-cortical afferents;
+          c,d: non-specific afferents;
+          e,f: cortico-cortical afferents; \cite{Abeles91})
+        }        
+      }        
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Efferent (outgoing) connections}
+  \begin{itemize}\itemsep1ex
+  \item almost all pyramidal and some spiny stellate cells send axons 
+    into the white matter, in particular
+    \begin{itemize}\itemsep1ex
+    \item cortico-cortico efferents from layer II/III pyramidal cells
+    \item cortico-thalamic efferents from layer VI pyramidal cells
+    \item axons to brain stem and spinal cord from large layer V pyramidal cells
+    \end{itemize}
+  \end{itemize}  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Vertical (laminar) connectivity}
+  \vspace*{-2ex}
+  \begin{itemize}
+  \item layer- and cell-type specific local connections
+  \end{itemize}
+  \begin{center}
+    \only<1>{
+      \parbox{0.75\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/Thomson03_5_fig1.png}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Thomson03}}
+      }
+    }
+    \only<2>{      
+      \parbox{0.9\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/Binzegger04_8441_fig12_mod.png}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Binzegger04}}
+      }
+    }
+  \end{center}
+\end{frame} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Horizontal connectivity}
+  \begin{itemize}
+  \item local synapses established by local axon collaterals arborizing within 
+    $\sim{}0.5\,\text{mm}$ (all neuron types)
+  \item intrinsic horizontal long-range connections of pyramidal cells 
+    over distances up to several millimeter (within gray matter)
+  \item extrinsic long-range connections of pyramidal cells through white matter
+  \end{itemize}
+  \begin{center}
+    \parbox{\linewidth}{
+      \includegraphics[width=\linewidth]{\figpath/Voges07_PHD_fig2}\\
+      \hspace*{\fill}{\tiny\color{gray}\parencite{Voges10_137}}
+    }            
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Local connectivity}
+  \begin{itemize}
+  \item probability of synaptic connection between adjacent
+    cortical neurons decays to zero within a horizontal distance of $\sim{}0.5\,\text{mm}$
+  \end{itemize}
+  \begin{center}
+    \parbox{0.7\linewidth}{
+      \includegraphics[width=\linewidth]{\figpath/Hellwig00_fig7}\\
+      \hspace*{\fill}{\tiny\color{gray}\parencite{Hellwig00}}
+    }      
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Local connectivity}
+  %\vspace{-0.5cm}
+  \begin{itemize}
+  \item detailed local connectivity data from new methods
+  \end{itemize}
+  \vspace{2ex}
+  \parbox{\linewidth}{
+    \parbox[t]{0.55\linewidth}{
+      \ \\
+      \includegraphics[width=\linewidth]{\figpath/Motta19_eaay3134_fig1.jpg}
+    }%
+    \hfill
+    \parbox[t]{0.44\linewidth}{
+      \ \\
+      \includegraphics[width=\linewidth]{\figpath/Motta19_eaay3134_fig3.jpg}
+    }\\        
+    \hspace*{\fill}{\tiny\color{gray}\parencite{Motta19_eaay3134}}
+      }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Intrinsic long-range connectivity}
+  \vspace*{-2ex}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+      \item 'patchy' projection patterns:
+        pyramidal cells project to distant (few mm) clusters
+        of target cells
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \only<1>{
+        \begin{center}
+          \vspace*{-2ex}
+          \parbox[t]{\linewidth}{
+            \includegraphics[width=\linewidth]{\figpath/Lund03_fig3B_mod}\\
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Lund03}}
+          }
+        \end{center}
+      } 
+    \end{column}
+  \end{columns}
+  \only<2>{
+    \begin{center}
+      \parbox[t]{\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/Voges07_PHD_fig1}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Voges10_137}}
+      }
+    \end{center}
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{Extrinsic long-range connectivity}
+  \vspace*{-2ex}
+  \begin{columns}
+    \begin{column}{0.6\linewidth}
+      \begin{itemize}\itemsep1ex
+      \item<1-> white-matter connections between cortical areas
+      \item<2-> highly inhomogeneous and area specific
+      \item<3-> hierarchical organization with layer-specific \\feedforward (bottom-up) and feedback (top-down) connections
+      \end{itemize}      
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \only<3>{
+        \begin{center}
+          \parbox{\linewidth}{\centering
+            % \includegraphics[width=0.8\linewidth]{\figpath/Markov14_225_fig5.png}\\
+            % \hspace*{\fill}{\tiny\color{gray}\parencite{Markov14}}
+            \includegraphics[width=\linewidth]{\figpath/Markov13_187.jpg}\\
+            \hspace*{\fill}{\tiny\color{gray}\parencite{Markov13_187}}
+      }        
+    \end{center}
+  }      
+    \end{column}
+  \end{columns}
+  \only<1>{
+    \begin{center}
+      \vspace*{-1cm}
+      \parbox[t]{\linewidth}{
+        \includegraphics[width=\linewidth]{\figpath/Schmidt18_1409_fig1.png}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Schmidt18_1409}}
+      }
+    \end{center}
+  }
+  \only<2>{
+    \begin{center}
+      \parbox{\linewidth}{\centering
+        \includegraphics[width=\linewidth]{\figpath/Budd12_fig5_a_c.png}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Budd12_42}}
+      }        
+    \end{center}
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Universality of neocortical architecture}
+\section{\ttl}
+\begin{frame}[t,plain]
+  % 
+  \frametitle{\ttl}
+  %% 
+  \only<2>{
+    %\vspace*{1ex}
+    Cytoarchitecture of\\
+    different human cortices:\\[-2ex] 
+    \parbox{\linewidth}{
+      \hspace*{\fill}\includegraphics[width=0.7\linewidth]{\figpath/Yanez05_344_fig2_labeled.png}\\
+      \hspace*{\fill}{\tiny\color{gray}\parencite{Yanez05_344,}}      
+    }
+    \\[-17ex]
+    \parbox{0.25\linewidth}{
+      \includegraphics[width=\linewidth]{\figpath/Gray727-Brodman.png}\\[-2ex]
+      \hspace*{\fill}\tiny\color{gray} (Wikipedia)
+    }
+  }
+  %%% 
+  \only<3>{
+    %\vspace*{1ex}
+    Cytoarchitecture of cortices\\
+    from different mammals:\\[-4ex]
+    \parbox{\linewidth}{
+      \hspace*{\fill}\includegraphics[width=0.55\linewidth]{\figpath/DeFelipe11_fig8.jpg}\\
+      \hspace*{\fill}{\tiny\color{gray}\parencite{DeFelipe11_29}}      
+    }
+    \\[-35ex]
+    \parbox{0.25\linewidth}{
+      \includegraphics[width=\linewidth]{\figpath/Lobes_of_the_brain_NL.pdf}\\
+      \hspace*{\fill}\tiny\color{gray} (adapted from Wikipedia)
+    }
+  }
+  %%% 
+  \begin{itemize}
+  \item<1,4-> structure of neocortex is variable across functional areas, individuals \& species\\
+    (thickness, vertical organization, cell density, connection density)
+  \item<1,4-> but: \emph{similarities are more striking than differences}
+    \only<1>{\\[4ex]
+      \parbox{\linewidth}{\centering
+        \includegraphics[width=0.8\linewidth]{\figpath/DeFelipe11_fig10.jpg}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{DeFelipe11_29}}
+      }}    
+  \item<4->[$\curvearrowright$] \emph{universal computational device?} {\tiny\color{gray}(Mountcastle, 1978)}\\[1ex]
+  \item<5-> \emph{\Large What ``universal'' algorithm is it implementing?}\\[1ex]
+  \item<6-> functional specificity may arise from specific connectivity between
+    \begin{itemize}
+    \item subcortical brain regions (e.g.~thalamus)
+      and different cortex areas
+    \item different cortex areas
+    \end{itemize}
+    \visible<6>{
+      \ \\[1ex]
+      \parbox{\linewidth}{\centering
+        \includegraphics[width=0.8\linewidth]{\figpath/Budd12_fig5_a_c.png}\\
+        \hspace*{\fill}{\tiny\color{gray}\parencite{Budd12_42}}
+      }    
+    }
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Properties of cortical networks -- an overview}
+\section{\ttl}
+\begin{frame}[plain]
+  \frametitle{\ttl}
+  \framesubtitle{}
+    \begin{itemize}
+    \itemsep1ex
+  \item<1-> large (but not infinite) network size:
+    $\sim{}10^{4,\ldots{},5}$ neurons/mm$^3$,
+    $\sim{}10^{10}$ neurons in human cortex
+  \item<2-> large diversity of cell types (morphology + electrophysiology)
+  \item<3-> classification of neurons into ``excitatory'' and ``inhibitory'' (Dale's law)
+  \item<4-> large fan-in/out: $\sim{}10^2,\ldots, 10^4$ synapses per neuron
+  \item<5-> short- and long-range connections:
+    each neuron can --in principle-- target any other neuron 
+    (in contrast to locally coupled systems, such as crystals)
+  \item<6-> sparse connectivity: at scale of $1\,\text{mm}^3$, 
+    only $10\%$ of all possible connections are realized
+  \item<7-> structural ``non-random'' connectivity motifs
+  \item<8-> cell-, layer-, and area specific connectivity
+  \item<9-> (activity dependent) modulation of connection strength (plasticity) 
+    on various time scales: $\text{ms},\ldots, \text{days}$
+  \item<10-> interaction between neurons (predominantly) via short ($\sim$ $2\text{ms}$) electric pulses (``action potentials'', ``spikes'') with stereotype shape (only spike time matters)
+  \item<11-> delayed interaction: $\sim{}0.1,\ldots,10\,\text{ms}$
+  \item<12-> high degree of spatio-temporal sparsity:\\
+    at any ``moment'' in time, only a small fraction of neurons fires
+  \item<13-> energy demands of the brain:
+    \begin{itemize}
+    \item $\approx{}20\%$ of the total body budget ($\approx{}10\times$ more expensive than muscle tissue)
+    \item $\approx{}20$ Watts
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t,plain,allowframebreaks]
+  \begin{center}
+    \vspace*{\fill}
+    \LARGE\emph{\it Thanks}
+    \vspace*{\fill}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% references
+\setbeamertemplate{bibliography item}{}  %% remove document icon
+\begin{frame}[t,plain,allowframebreaks]  
+  \frametitle{References}
+  \bibitemsep1ex
+  \renewcommand{\bibfont}{\normalfont\small}
+  \printbibliography
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
